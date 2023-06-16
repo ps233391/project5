@@ -18,7 +18,9 @@ class ExerciseFactory extends Factory
     public function definition(): array
     {
         return [
-            Name
+            'name' => fake()->name(),
+            'description' => fake()->description(30),
+            
         ];
     }
 }
