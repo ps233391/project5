@@ -13,7 +13,7 @@ class ComponentsSeeder extends Seeder
     public function run(): void
     {
         $this->call([
-            CompinentsFactory::class,
+            ComponentsFactory::class,
         ]);
     }
 }
