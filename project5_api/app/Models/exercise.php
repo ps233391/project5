@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class exercise extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'description',
+    ];
+
+    /**
+     * Establish relationship between Exercise and Achievement Model
+     */
+    public function Components() {
+        $this->belongsToMany(Components::class);
+    }
 }

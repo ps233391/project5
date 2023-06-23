@@ -12,23 +12,19 @@ class ExerciseController extends Controller
      */
     public function index()
     {
-        //
+        return exercise::all();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $exercise = exercise::create([
+            'name' => $request->name,
+            'description' => $request->description,
+        ]);
+
+        return $exercise;
     }
 
     /**
@@ -36,15 +32,7 @@ class ExerciseController extends Controller
      */
     public function show(exercise $exercise)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(exercise $exercise)
-    {
-        //
+        return $exercise;
     }
 
     /**
@@ -60,6 +48,6 @@ class ExerciseController extends Controller
      */
     public function destroy(exercise $exercise)
     {
-        //
+        // $exercise -> 
     }
 }
