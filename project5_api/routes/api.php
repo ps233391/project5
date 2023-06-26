@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\ExerciseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,11 @@ Route::post('/exercise', [ExerciseController::class, 'store']);
 Route::get('/exercise/{exercise}', [ExerciseController::class, 'show']);
 Route::put('/exercise/{exercise}', [ExerciseController::class, 'update']);
 Route::delete('/exercise/{exercise}', [ExerciseController::class, 'destroy']);
+
+
+
+Route::get('/components', [ComponentsController::class, 'index']);
+Route::post('/components', [ComponentsController::class, 'store']);
+Route::get('/components/{components}', [ComponentsController::class, 'show']);
+Route::put('/components/{components}', [ComponentsController::class, 'update']);
+Route::delete('/components/{components}', [ComponentsController::class, 'destroy']);

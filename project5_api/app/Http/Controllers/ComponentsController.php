@@ -7,28 +7,23 @@ use Illuminate\Http\Request;
 
 class ComponentsController extends Controller
 {
-    /**
+   /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return components::all();
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        $exercise = components::create([
+            'name' => $request->name,
+        ]);
+
+        return $exercise;
     }
 
     /**
@@ -36,15 +31,7 @@ class ComponentsController extends Controller
      */
     public function show(components $components)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(components $components)
-    {
-        //
+        return $components;
     }
 
     /**
@@ -60,6 +47,7 @@ class ComponentsController extends Controller
      */
     public function destroy(components $components)
     {
-        //
+        //dit
+        // $exercise -> 
     }
 }
