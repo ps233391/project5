@@ -48,7 +48,6 @@ class ExerciseController extends Controller
      */
     public function destroy(exercise $exercise)
     {
-        //dit
-        // $exercise -> 
+        $exercise->delete();
     }
 }
