@@ -32,7 +32,7 @@ class ExerciseController extends Controller
      */
     public function show(exercise $exercise)
     {
-        return $exercise;
+         return $exercise;
     }
 
     /**
@@ -40,7 +40,7 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, exercise $exercise)
     {
-        //
+      $exercise->update($request->all());
     }
 
     /**
