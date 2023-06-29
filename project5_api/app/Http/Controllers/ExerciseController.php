@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\exercise;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\returnSelf;
+
 class ExerciseController extends Controller
 {
     /**
@@ -40,7 +42,13 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, exercise $exercise)
     {
+<<<<<<< Updated upstream
       $exercise->update($request->all());
+=======
+        $exercise->update($request->all());
+
+        return $exercise;
+>>>>>>> Stashed changes
     }
 
     /**

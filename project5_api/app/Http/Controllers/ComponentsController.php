@@ -47,7 +47,6 @@ class ComponentsController extends Controller
      */
     public function destroy(components $components)
     {
-        //dit
-        // $exercise -> 
+        $components->delete();
     }
 }
