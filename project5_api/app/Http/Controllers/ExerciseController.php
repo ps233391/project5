@@ -42,13 +42,9 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, exercise $exercise)
     {
-<<<<<<< Updated upstream
-      $exercise->update($request->all());
-=======
         $exercise->update($request->all());
 
         return $exercise;
->>>>>>> Stashed changes
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\ComponentsController;
 use App\Http\Controllers\ExerciseController;
 use Illuminate\Http\Request;
@@ -33,3 +33,11 @@ Route::post('/components', [ComponentsController::class, 'store']);
 Route::get('/components/{components}', [ComponentsController::class, 'show']);
 Route::put('/components/{components}', [ComponentsController::class, 'update']);
 Route::delete('/components/{components}', [ComponentsController::class, 'destroy']);
+
+
+
+Route::post('/auth/register', [AuthController::class, 'createUser']);
+Route::post('/auth/login', [AuthController::class, 'loginUser']);
+
+
+Route::apiResource('posts', PostController::class)->middleware('auth:sanctum');
