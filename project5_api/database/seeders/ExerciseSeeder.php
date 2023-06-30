@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Database\Factories\ExerciseFactory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -13,8 +15,11 @@ class ExerciseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call([
-            ExerciseFactory::class,
+        DB::table('exercises')->insert([
+            'name' => 'Feie',
+            'description' => 'Feie is eiskoautd',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
         ]);
     }
 }

@@ -39,7 +39,9 @@ class ComponentsController extends Controller
      */
     public function update(Request $request, components $components)
     {
-        //
+        $components->update($request->all());
+
+        return $components;
     }
 
     /**
