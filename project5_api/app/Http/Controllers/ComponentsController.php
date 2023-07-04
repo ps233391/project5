@@ -1,35 +1,40 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use App\Models\components;
+use App\Models\Components;
 use Illuminate\Http\Request;
 
 class ComponentsController extends Controller
 {
-   /**
+    /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return components::all();
+        return Components::all();
     }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $exercise = components::create([
-            'name' => $request->name,
-        ]);
+        try {
+            $exercise = Components::create([
+                'name' => $request->name,
+            ]);
 
-        return $exercise;
+            return $exercise;
+        } catch (\Exception $e) {
+            // Handle the exception
+            return response()->json(['error' => 'Failed to store the component.'], 500);
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(components $components)
+    public function show(Components $components)
     {
         return $components;
     }
@@ -37,18 +42,28 @@ class ComponentsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, components $components)
+    public function update(Request $request, Components $components)
     {
-        $components->update($request->all());
+        try {
+            $components->update($request->all());
 
-        return $components;
+            return $components;
+        } catch (\Exception $e) {
+            // Handle the exception
+            return response()->json(['error' => 'Failed to update the component.'], 500);
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(components $components)
+    public function destroy(Components $components)
     {
-        $components->delete();
+        try {
+            $components->delete();
+        } catch (\Exception $e) {
+            // Handle the exception
+            return response()->json(['error' => 'Failed to delete the component.'], 500);
+        }
     }
 }

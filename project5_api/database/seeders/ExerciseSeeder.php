@@ -16,8 +16,8 @@ class ExerciseSeeder extends Seeder
     public function run(): void
     {
         DB::table('exercises')->insert([
-            'name' => 'Feie',
-            'description' => 'Feie is eiskoautd',
+            'name' => 'test1',
+            'description' => 'tester',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

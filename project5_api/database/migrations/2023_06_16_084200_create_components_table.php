@@ -14,12 +14,7 @@ return new class extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('exercise_id');
             $table->timestamps();
-
-            $table->foreign('exercise_id')->references('id')->on('exercises');
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

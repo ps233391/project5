@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
            UserSeeder::class,
            ExerciseSeeder::class,
            ComponentsSeeder::class,
+           RelationSeeder::class,
        ]);
     }
 }

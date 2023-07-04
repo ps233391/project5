@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\components;
 use App\Models\exercise;
 use Illuminate\Http\Request;
-
-use function PHPUnit\Framework\returnSelf;
+use Illuminate\Validation\ValidationException;
 
 class ExerciseController extends Controller
 {
@@ -16,17 +16,27 @@ class ExerciseController extends Controller
     {
         return exercise::all();
     }
+
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        $exercise = exercise::create([
-            'name' => $request->name,
-            'description' => $request->description,
-        ]);
+        try {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'description' => 'required|string',
+            ]);
 
-        return $exercise;
+            $exercise = exercise::create([
+                'name' => $request->name,
+                'description' => $request->description,
+            ]);
+
+            return $exercise;
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
@@ -34,7 +44,7 @@ class ExerciseController extends Controller
      */
     public function show(exercise $exercise)
     {
-         return $exercise;
+        return $exercise;
     }
 
     /**
@@ -42,9 +52,18 @@ class ExerciseController extends Controller
      */
     public function update(Request $request, exercise $exercise)
     {
-        $exercise->update($request->all());
+        try {
+            $this->validate($request, [
+                'name' => 'required|string|max:255',
+                'description' => 'required|string',
+            ]);
 
-        return $exercise;
+            $exercise->update($request->all());
+
+            return $exercise;
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
     }
 
     /**
@@ -53,5 +72,11 @@ class ExerciseController extends Controller
     public function destroy(exercise $exercise)
     {
         $exercise->delete();
+    }
+
+    public function destroycomponent(exercise $exercise, components $components)
+    {
+        $exercise->delete();
+        $components->delete();
     }
 }
